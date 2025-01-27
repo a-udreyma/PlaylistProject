@@ -17,7 +17,7 @@ public class Song
      * Constructor-- what information needs to be given to make a Song?
      * How will you handle 'liked' songs? It makes sense for a Song not be 'liked' by default
      */
-    public Song(String songName, String songArtist, int songMinutes, int songSeconds, boolean )
+    public Song(String songName, String songArtist, int songMinutes, int songSeconds, boolean liked)
     {
         name = songName;
         artist = songArtist; 
@@ -53,12 +53,30 @@ public class Song
     }
     
     /**
-     * Returns the length of the song
+     * Identifies the total length of the song in a string form with a colon (X:YZ)
      * @return String song length
      */
-    public String getLength()
+    public String getLengthString()
     {
-        return length;
+        return (minutes + ":" + seconds);
+    }
+    
+    /**
+     * Identifies the minutes of the song
+     * @return int song minutes
+     */
+    public int getSongMinutes()
+    {
+        return minutes; 
+    }
+    
+    /**
+     * Identifies the seconds of the song
+     * @return int song seconds
+     */
+    public int getSongSeconds()
+    {
+        return seconds;
     }
     
     /**
