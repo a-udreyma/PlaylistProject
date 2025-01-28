@@ -1,9 +1,10 @@
-package maa;
+ 
 
 /**
  * File for a Song class to be used in the Playlist Project
- * @Audrey Ma @Brynn Connolly
- * @2024-01-27
+ * Project for AP Computer Science A
+ * @author Audrey Ma and Brynn Connolly 
+ * @versionn 2024-01-27
  */
 public class Song 
 {
