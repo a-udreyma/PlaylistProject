@@ -48,13 +48,13 @@ public class Playlist
      * Likes a song in the playlist
      * @param a the song to like in the playlist
      */
-    public void likeSong(Song newSong)
+    public void like(String title)
     {
-        for (int i = 0; i < playlist.size(); i++)
+        for (Song song :  playlist)
         {
-            if (playlist.get(i).equals(newSong)) 
+            if (song.getName().equals(title)) 
             { 
-                playlist.remove(i); 
+                song.status(); 
             }
         }
     }
@@ -63,9 +63,16 @@ public class Playlist
      * Removes a song from the playlist
      * @param a the song to remove from the playlist
      */
-    public void removeSong(Song newSong)
+    public void removeSong(String title)
     {
-        playlist.remove(newSong);
+        for(int i = playlist.size()-1; i >= 0; i--)
+        {
+            if(playlist.get(i).getName().equals(title))
+            {
+                playlist.remove(i);
+            }
+        }
+        
     }
 
     /**
@@ -75,7 +82,7 @@ public class Playlist
     {
         for (Song song : playlist)
         {
-            System.out.println("\"" + song.getName() + "\" by " + song.getArtist() + " (" + song.getLengthString() + ")");
+            System.out.println("\"" + song.getName() + "\" by " + song.getArtist() + " (" + song.getDuration() + ")");
         }
     }
 
@@ -86,9 +93,9 @@ public class Playlist
     {
         for (Song song : playlist)
         {
-            if (song.getLiked() == true)
+            if (song.status() == true)
             {
-                System.out.println("\"" + song.getName() + "\" by " + song.getArtist() + " (" + song.getLengthString() + ")");
+                System.out.println("\"" + song.getName() + "\" by " + song.getArtist() + " (" + song.getDuration() + ")");
             }
         }
     }
@@ -99,27 +106,12 @@ public class Playlist
      */
     public String getTotalDuration()
     {
-        int totalHours = 0;
-        int totalMinutes = 0;
-        int totalSeconds = 0; 
-        for (Song song : playlist)
+        int totaltime = 0;
+        for( Song song : playlist)
         {
-            totalMinutes += song.getSongMinutes();
-            totalSeconds += song.getSongSeconds();
+            totaltime += song.getDuration();
         }
-
-        if (totalSeconds >= 60)
-        {
-            totalMinutes += totalSeconds % 60;
-            totalSeconds -= (totalSeconds % 60) * 60;
-        }
-        else if (totalMinutes >= 60)
-        {
-            totalHours += totalMinutes % 60; 
-        }
-
-        return ("In total, your playlist is " + totalHours + " hours, " + totalMinutes + " minutes, and " + totalSeconds 
-            + " seconds long.");
+        return (totaltime/60) + ":" + (totaltime%60);
     }
 
     /**
@@ -127,11 +119,11 @@ public class Playlist
      */
     public void removeUnlikedSongs()
     {
-        for (Song song : playlist)
+        for(int i = playlist.size()-1; i >= 0; i--)
         {
-            if (song.getLiked() == false)
+            if(!playlist.get(i).status())
             {
-                playlist.remove(song);
+                playlist.remove(i);
             }
         }
     }

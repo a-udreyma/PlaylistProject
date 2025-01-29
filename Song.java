@@ -10,20 +10,18 @@ public class Song
 {
     private String name;
     private String artist;
-    private int minutes;
-    private int seconds;
+    private int durationInSecs;
     private boolean liked;
 
     /**
      * Constructor-- what information needs to be given to make a Song?
      * How will you handle 'liked' songs? It makes sense for a Song not be 'liked' by default
      */
-    public Song(String songName, String songArtist, int songMinutes, int songSeconds, boolean liked)
-    {
-        name = songName;
+    public Song(String songName, String songArtist, int time, boolean liked)
+    
+        {name = songName;
         artist = songArtist; 
-        minutes = songMinutes;
-        seconds = songSeconds;
+        durationInSecs = time;
         liked = false;
     }
 
@@ -53,57 +51,31 @@ public class Song
         return artist;
     }
     
-    /**
-     * Identifies the total length of the song in a string form with a colon (X:YZ)
-     * @return String song length
-     */
-    public String getLengthString()
+    
+    public int getDuration()
     {
-        return (minutes + ":" + seconds);
+        return durationInSecs;
+    }
+    public String getDurationMins()
+    {
+        return durationInSecs/60 + ":" + durationInSecs%60;
     }
     
-    /**
-     * Identifies the minutes of the song
-     * @return int song minutes
-     */
-    public int getSongMinutes()
-    {
-        return minutes; 
-    }
-    
-    /**
-     * Identifies the seconds of the song
-     * @return int song seconds
-     */
-    public int getSongSeconds()
-    {
-        return seconds;
-    }
-    
-    /**
-     * Identifies whether or not the song is liked or not
-     * @return boolean liked
-     */
-    public boolean getLiked()
+    public boolean status()
     {
         return liked;
     }
     
+    
     /**
      * Likes a song
      */
-    public void likeSong()
+    public void likeSong(boolean status)
     {
-        liked = true;
+        liked = status;
     }
     
-    /**
-     * Unlikes a song
-     */
-    public void unlikeSong()
-    {
-        liked = false;
-    }
+    
 }
 
 
