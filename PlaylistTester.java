@@ -8,16 +8,35 @@
  */
 public class PlaylistTester {
     public static void main(String[] args) {
-        System.out.println("Initializing a Playlist...\n");
-        //Make your playlist here
-
+        System.out.println("Initializing a Playlist...\n"); // making the playlist to tst
+        int testPassed = 0;
+        Playlist n = new Playlist();
+        testPassed++;
+        System.out.println("Tests passed: " + testPassed + "/9");
+        
+        
+        
+        System.out.println("Displaying liked songs within the empty playlist...");
+        n.showLikedSongs();
+        
+        
+        testPassed++;
+        System.out.println("Tests passed: " + testPassed + "/9");
+        
         System.out.println("Adding songs to the Playlist...\n");
         /**
          * Add some songs here. Note that the format for adding a Song to a Playlist p
          * is something like...
          * p.addSong(new Song(..., ..., ...))
          */
-
+        n.addSong(new Song("Kill Bill", "SZA", 2, 55, true));
+        n.addSong(new Song("No Control", "One Direction", 3, 19, false));
+        n.addSong(new Song("Call Out My Name", "The Weeknd", 3, 58, true));
+        testPassed++;
+        
+        
+        
+        System.out.println("Tests passed: " + testPassed+ "/9");
 
 
         System.out.println("Printing the songs...\n");
@@ -50,6 +69,7 @@ public class PlaylistTester {
 
 
         System.out.println("Printing all songs...\n");
+      
         //This should now look like only the liked songs list from before
     }
 }
